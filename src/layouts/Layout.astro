@@ -2,6 +2,9 @@
 ---
 import MainHead from '../components/MainHead.astro';
 import NavBar from '../components/NavBar.astro';
+import { ClientRouter } from "astro:transitions";
+
+import '../styles/global.css'
 
 // Learn about using Astro layouts:
 // https://docs.astro.build/en/basics/layouts/
@@ -18,9 +21,14 @@ const { title, description } = Astro.props;
 <html lang="es">
 	<head>
 		<MainHead {title} {description} />
+		<!-- // https://docs.astro.build/en/guides/view-transitions/#enabling-view-transitions-spa-mode -->
+		<ClientRouter />
 	</head>
 	<body>
 		<NavBar />
-		<slot />
+
+		<main class="container">
+			<slot />
+		</main>
 	</body>
 </html>
