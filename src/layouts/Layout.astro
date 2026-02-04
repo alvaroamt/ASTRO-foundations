@@ -1,0 +1,26 @@
+
+---
+import MainHead from '../components/MainHead.astro';
+import NavBar from '../components/NavBar.astro';
+
+// Learn about using Astro layouts:
+// https://docs.astro.build/en/basics/layouts/
+
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="es">
+	<head>
+		<MainHead {title} {description} />
+	</head>
+	<body>
+		<NavBar />
+		<slot />
+	</body>
+</html>

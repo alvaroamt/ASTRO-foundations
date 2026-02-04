@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Server Only
+const name = "Álvaro AMT";
+---
+
+	
+	<Layout title=`Página de ${name}` description="Esta es la página de {name}">
+		<h1>{name}</h1>
+		<p>
+			Momento actual servidor: {
+				new Date().toLocaleString("es-DO", {
+					timeZone: "America/Santo_Domingo",
+				})
+			}
+		</p>
+		<p>
+			Momento actual real: <span id="real-time">hora</span>
+		</p>
+		<footer>2023</footer>
+		<script>
+			const currentYear: number = new Date().getFullYear();
+			const realTimeSpan = document.getElementById(
+				"real-time",
+			) as HTMLSpanElement;
+			const footer = document.querySelector("footer") as HTMLElement;
+			footer.innerText = `Año ${currentYear}`;
+
+			function updateTime() {
+				const now = new Date();
+				realTimeSpan.innerText = now.toLocaleString("es-DO", {
+					timeZone: "America/Santo_Domingo",
+				});
+			}
+			updateTime();
+			// setInterval(updateTime, 1000);
+		</script>
+	</Layout>
